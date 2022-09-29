@@ -10,5 +10,6 @@ const teamService = new TeamService(team);
 const teamController = new TeamController(teamService);
 
 route.get('/teams', teamController.getTeams.bind(teamController));
+route.get('/teams/:id', teamController.getTeamById.bind(teamController));
 
 export default route;
