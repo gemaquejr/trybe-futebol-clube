@@ -37,4 +37,14 @@ export default class MatchesController {
       next(error);
     }
   }
+
+  public async patchMatch(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    try {
+      await this.service.patchMatch(Number(id));
+      return res.status(200).json({ message: 'Finished' });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

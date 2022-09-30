@@ -14,4 +14,9 @@ export default class MatchesService {
     const match = await this.model.postOneMatch(data);
     return match;
   }
+
+  public async patchMatch(id: number): Promise<void> {
+    const match = await this.model.patchOneMatch(id);
+    return match;
+  }
 }
