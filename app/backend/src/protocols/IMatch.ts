@@ -9,8 +9,10 @@ export interface IMatches {
 
 export interface IMatchesService {
   getMatches(): Promise<IMatches[]>;
+  postMatches(data: IMatches): Promise<IMatches | boolean>;
 }
 
 export interface IMatchesModel {
   getAllMatches(): Promise<IMatches[]>;
+  postOneMatch(data: IMatches): Promise<IMatches | boolean>;
 }

@@ -21,4 +21,12 @@ export default class MatchesRepository implements IMatchesModel {
     });
     return matches;
   }
+
+  async postOneMatch(data: IMatches): Promise<IMatches | boolean> {
+    const { homeTeam, homeTeamGoals, awayTeam, awayTeamGoals, inProgress } = data;
+    const match = await this.model.create(
+      { homeTeam, homeTeamGoals, awayTeam, awayTeamGoals, inProgress },
+    );
+    return match;
+  }
 }

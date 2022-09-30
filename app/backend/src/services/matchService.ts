@@ -9,4 +9,9 @@ export default class MatchesService {
     const matches = await this.model.getAllMatches();
     return matches;
   }
+
+  public async postMatches(data: IMatches): Promise<IMatches | boolean> {
+    const match = await this.model.postOneMatch(data);
+    return match;
+  }
 }
