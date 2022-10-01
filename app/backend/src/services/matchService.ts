@@ -19,4 +19,10 @@ export default class MatchesService {
     const match = await this.model.patchOneMatch(id);
     return match;
   }
+
+  public async patchMatchInProgress(id: number, homeTeamGoals: number, awayTeamGoals: number):
+  Promise<void> {
+    const match = await this.model.patchOneMatchInProgress(id, homeTeamGoals, awayTeamGoals);
+    return match;
+  }
 }

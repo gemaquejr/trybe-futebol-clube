@@ -15,5 +15,6 @@ const matchesController = new MatchesController(matchesService);
 route.get('/matches', matchesController.getMatches.bind(matchesController));
 route.post('/matches', jwt.validate, matchesController.postMatches.bind(matchesController));
 route.patch('/matches/:id/finish', matchesController.patchMatch.bind(matchesController));
+route.patch('/matches/:id', matchesController.patchMatchInProgress.bind(matchesController));
 
 export default route;

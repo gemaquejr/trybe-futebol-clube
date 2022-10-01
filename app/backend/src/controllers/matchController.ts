@@ -47,4 +47,15 @@ export default class MatchesController {
       next(error);
     }
   }
+
+  public async patchMatchInProgress(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    try {
+      const { homeTeamGoals, awayTeamGoals } = req.body;
+      await this.service.patchMatchInProgress(Number(id), homeTeamGoals, awayTeamGoals);
+      return res.status(200).json({ message: 'Updated' });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
