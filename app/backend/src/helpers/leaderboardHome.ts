@@ -1,4 +1,4 @@
-import { ILeaderboardMatch, ILeaderboardHome } from '../interface/ILeaderboardHome';
+import { ILeaderboardMatch, ILeaderboardHome } from '../interface/ILeaderboard';
 
 const Name = (team: ILeaderboardMatch) => {
   const { name } = team;

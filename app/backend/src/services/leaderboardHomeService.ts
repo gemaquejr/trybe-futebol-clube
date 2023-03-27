@@ -1,4 +1,4 @@
-import { ILeaderboardHome, ILeaderboardHomeModel } from '../interface/ILeaderboardHome';
+import { ILeaderboardHome, ILeaderboardHomeModel } from '../interface/ILeaderboard';
 
 export default class LeaderboardService {
   constructor(private model: ILeaderboardHomeModel) {
