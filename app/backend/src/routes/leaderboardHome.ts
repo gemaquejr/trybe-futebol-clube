@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import LeaderboardHomeController from '../controllers/leaderboardHomeController';
+import LeaderboardHomeController from '../controllers/leaderboardController';
 import LeaderboardHomeService from '../services/leaderboardHomeService';
 import LeaderboardHomeRepository from '../repository/leaderboardHomeRepository';
 
