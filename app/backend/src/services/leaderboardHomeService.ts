@@ -79,7 +79,6 @@ export default class LeaderboardHomeService {
 
   public async getLeaderboard(): Promise<ILeaderboard[]> {
     const finishedMatches = await this.matchModel.findAll({ where: { inProgress: false } });
-    // const finishedMatches = this.changeStadium(noneInProgress, stadium);
     const allTeams = await this.teamModel.findAll();
     const ultimateLeaderboard = allTeams.map((team: ITeam) => {
       return {
