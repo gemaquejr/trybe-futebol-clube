@@ -1,61 +1,50 @@
-import { Request, Response, NextFunction } from 'express';
-import { IMatchesService } from '../interface/IMatch';
-import Team from '../database/models/Team';
+import { Request, Response } from 'express';
+import MatchService from '../services/matchService';
 
-export default class MatchesController {
-  constructor(private service: IMatchesService) {
-    this.service = service;
-  }
+export default class MatchController {
+    constructor(private matchService = new MatchService()) {}
 
-  public async getMatches(_req: Request, res: Response, next: NextFunction) {
-    try {
-      const matches = await this.service.getMatches();
-      return res.status(200).json(matches);
-    } catch (error) {
-      next(error);
+    async getAllMatches(_req: Request, res: Response) {
+        const matches = await this.matchService.getAllMatches();
+        return res.status(200).json(matches);
     }
-  }
-
-  public async postMatches(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { homeTeam, homeTeamGoals, awayTeam, awayTeamGoals, inProgress } = req.body;
-
-      const dataHome = await Team.findByPk(homeTeam);
-      const dataAwayTeam = await Team.findByPk(awayTeam);
-      if (!dataHome || !dataAwayTeam) {
-        return res.status(404).json({ message: 'There is no team with such id!' });
-      }
-      const matches = await this.service.postMatches(
-        { homeTeam, homeTeamGoals, awayTeam, awayTeamGoals, inProgress },
-      );
-      if (homeTeam === awayTeam) {
-        return res.status(401).json({
-          message: 'It is not possible to create a match with two equal teams' });
-      }
-      return res.status(201).json(matches);
-    } catch (error) {
-      next(error);
+    async getMatchesInProgress(req: Request, res: Response) {
+        const { inProgress } = req.query;
+            if (!inProgress) {
+                return this.getAllMatches(req, res);
+            }
+            const progress = (inProgress === 'true');
+            const result = await this.matchService.getMatchesInProgress(progress);
+            return res.status(200).json(result);
     }
-  }
-
-  public async patchMatch(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-    try {
-      await this.service.patchMatch(Number(id));
-      return res.status(200).json({ message: 'Finished' });
-    } catch (error) {
-      next(error);
+    async createMatch(req: Request, res: Response) {
+        try {
+            const validHomeTeam = await this.matchService.findTeam(req.body)
+            if (!validHomeTeam) return res.status(404).json({ message: 'There is no team with such id!'})
+            const result = await this.matchService.createMatch(req.body);
+            return res.status(201).json(result);
+        } catch (error: any) {
+            return res.status(401).json({ message: error.message})
+        }
     }
-  }
-
-  public async patchMatchInProgress(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-    try {
-      const { homeTeamGoals, awayTeamGoals } = req.body;
-      await this.service.patchMatchInProgress(Number(id), homeTeamGoals, awayTeamGoals);
-      return res.status(200).json({ message: 'Updated' });
-    } catch (error) {
-      next(error);
+     async updateMatch(req: Request, res: Response) {
+        const { id } = req.params;
+        const result = await this.matchService.updateMatch(Number(id));
+        if (!result) {
+            res.status(500).json({ message: 'Failed to update'})
+        }
+        return res.status(200).json({message: 'Finished'});
     }
-  }
+    async updateMatchInProgress(req: Request, res: Response) {
+        const { id } = req.params;
+        const { inProgress } = req.query;
+        const { homeTeamGoals, awayTeamGoals } = req.body;
+        try {
+            const result = await this.matchService.updateMatchInProgress(Number(id), homeTeamGoals, awayTeamGoals);
+            return res.status(200).json({ message: 'Updated successfully'})
+        } catch (error) {
+            return res.status(500).json({ message: 'Error'})
+        }
+    }
+
 }
