@@ -1,5 +1,5 @@
 import Model from '../database/models/Team';
-import { ITeam, ITeamModel } from '../protocols/ITeam';
+import { ITeam, ITeamModel } from '../interface/ITeam';
 
 export default class TeamRepository implements ITeamModel {
   constructor(private model = Model) {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ITeamService } from '../protocols/ITeam';
+import { ITeamService } from '../interface/ITeam';
 
 export default class TeamController {
   constructor(private service: ITeamService) {

@@ -1,5 +1,5 @@
 import Model from '../database/models/User';
-import { IUser, ILoginModel } from '../protocols/ILogin';
+import { IUser, ILoginModel } from '../interface/ILogin';
 
 export default class LoginRepository implements ILoginModel {
   constructor(private model = Model) {

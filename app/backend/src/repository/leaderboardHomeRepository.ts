@@ -1,5 +1,5 @@
 import Model from '../database/models/Match';
-import { ILeaderboardHome, ILeaderboardHomeModel } from '../protocols/ILeaderboardHome';
+import { ILeaderboardHome, ILeaderboardHomeModel } from '../interface/ILeaderboardHome';
 import Team from '../database/models/Team';
 import rankingTeam from '../helpers/leaderboardHome';
 

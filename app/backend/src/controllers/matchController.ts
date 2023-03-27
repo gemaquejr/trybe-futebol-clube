@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IMatchesService } from '../protocols/IMatch';
+import { IMatchesService } from '../interface/IMatch';
 import Team from '../database/models/Team';
 
 export default class MatchesController {

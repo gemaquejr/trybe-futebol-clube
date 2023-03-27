@@ -1,4 +1,4 @@
-import { IMatches, IMatchesModel } from '../protocols/IMatch';
+import { IMatches, IMatchesModel } from '../interface/IMatch';
 
 export default class MatchesService {
   constructor(private model: IMatchesModel) {

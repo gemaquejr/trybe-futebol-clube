@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
-import { IRequestUser } from '../protocols/IRequestUser';
-import { IToken } from '../protocols/ILogin';
+import { IRequestUser } from '../interface/IRequestUser';
+import { IToken } from '../interface/ILogin';
 import TokenGenerator from './tokenGenerator';
 
 class Jwt {

@@ -1,4 +1,4 @@
-import { ITeam, ITeamModel } from '../protocols/ITeam';
+import { ITeam, ITeamModel } from '../interface/ITeam';
 
 export default class TeamService {
   constructor(private model: ITeamModel) {

@@ -1,5 +1,5 @@
 import Model from '../database/models/Match';
-import { IMatches, IMatchesModel } from '../protocols/IMatch';
+import { IMatches, IMatchesModel } from '../interface/IMatch';
 import Team from '../database/models/Team';
 
 export default class MatchesRepository implements IMatchesModel {
