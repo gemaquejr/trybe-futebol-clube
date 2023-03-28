@@ -3,15 +3,16 @@ import db from '.';
 import Team from './Team';
 
 class Match extends Model {
-  public id: number;
-  public homeTeam: number;
-  public homeTeamGoals: number;
-  public awayTeam: number;
-  public awayTeamGoals: number;
-  public inProgress: boolean;
+  id!: number;
+  homeTeam!: number;
+  homeTeamGoals!: number;
+  awayTeam!: number;
+  awayTeamGoals!: number;
+  inProgress!: boolean;
 }
 
 Match.init({
+  // ... Campos
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -19,36 +20,40 @@ Match.init({
     primaryKey: true,
   },
   homeTeam: {
-    type: DataTypes.NUMBER,
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   homeTeamGoals: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   awayTeam: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   awayTeamGoals: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   inProgress: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   },
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'Matches',
+  modelName: 'matches',
   timestamps: false,
 });
 
-Match.belongsTo(Team, { foreignKey: 'homeTeam', as: 'teamHome' });
-Match.belongsTo(Team, { foreignKey: 'awayTeam', as: 'teamAway' });
-
-Team.hasMany(Match, { foreignKey: 'homeTeam', as: 'matchHome' });
-Team.hasMany(Match, { foreignKey: 'awayTeam', as: 'matchAway' });
+ Match.belongsTo(Team, { foreignKey: 'homeTeam', as: 'teamHome' });
+ Match.belongsTo(Team, { foreignKey: 'awayTeam', as: 'teamAway' });
 
 export default Match;
