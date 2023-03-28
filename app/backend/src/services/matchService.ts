@@ -1,5 +1,5 @@
-import Team from '../database/models/team';
-import Match from '../database/models/match';
+import Team from '../database/models/Team';
+import Match from '../database/models/Match';
 import IMatch from '../interface/IMatch';
 import ICreateMatch from '../interface/ICreateMatch';
 
