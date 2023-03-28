@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { ILoginModel } from '../interface/ILogin';
+import { ILoginModel } from '../interface/ICreateMatch';
 import TokenGenerator from '../middlewares/tokenGenerator';
 
 export default class LoginService {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IToken, IUserService } from '../interface/ILogin';
+import { IToken, IUserService } from '../interface/ICreateMatch';
 import TokenGenerator from '../middlewares/tokenGenerator';
 
 export default class LoginController {

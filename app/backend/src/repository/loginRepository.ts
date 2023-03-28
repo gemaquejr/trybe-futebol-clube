@@ -1,5 +1,5 @@
 import Model from '../database/models/User';
-import { IUser, ILoginModel } from '../interface/ILogin';
+import { IUser, ILoginModel } from '../interface/ICreateMatch';
 
 export default class LoginRepository implements ILoginModel {
   constructor(private model = Model) {
