@@ -1,6 +1,6 @@
-import Match from '../database/models/match'
+import Match from '../database/models/Match'
 import ILeaderboard from '../interface/ILeaderboard';
-import Team from '../database/models/team'
+import Team from '../database/models/Team'
 import ITeam from '../interface/ITeam';
 import IMatch from '../interface/IMatch';
 
