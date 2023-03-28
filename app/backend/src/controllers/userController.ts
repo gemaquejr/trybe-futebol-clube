@@ -1,4 +1,3 @@
-
 import * as bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
 import createToken from '../helper/Token';
