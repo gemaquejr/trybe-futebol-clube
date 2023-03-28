@@ -1,7 +1,7 @@
 import Model from '../database/models/Match';
 import { ILeaderboardHome, ILeaderboardHomeModel } from '../interface/ILeaderboard';
 import Team from '../database/models/Team';
-import rankingTeam from '../helper/leaderboardHome';
+import rankingTeam from '../helper/Token';
 
 export default class LeaderboardHomeRepository implements ILeaderboardHomeModel {
   constructor(private model = Model) {
