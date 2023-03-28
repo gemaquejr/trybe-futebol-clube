@@ -1,20 +1,18 @@
 import * as express from 'express';
-
-import Login from './routes/userRoute';
-import Team from './routes/teamRoute';
-import Matches from './routes/matchRoute';
-import leaderboardHome from './routes/leaderboardRoute';
+import routes from './routes';
 
 class App {
   public app: express.Express;
-
   constructor() {
     this.app = express();
-
     this.config();
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+    this.app.use('/login', routes.userRouter);
+    this.app.use('/teams', routes.teamRouter);
+    this.app.use('/matches', routes.matchRouter);
+    this.app.use('/leaderboard', routes.boardRouter);
   }
 
   private config():void {
@@ -24,21 +22,13 @@ class App {
       res.header('Access-Control-Allow-Headers', '*');
       next();
     };
-
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use(Login);
-    this.app.use(Team);
-    this.app.use(Matches);
-    this.app.use(leaderboardHome);
   }
-
   public start(PORT: string | number):void {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
   }
 }
-
 export { App };
-
 // A execução dos testes de cobertura depende dessa exportação
 export const { app } = new App();
