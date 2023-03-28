@@ -1,7 +1,7 @@
 import * as express from 'express';
 
 import Login from './routes/login';
-import Team from './routes/teams';
+import Team from './routes/teamRoute';
 import Matches from './routes/matchRoute';
 import leaderboardHome from './routes/leaderboardRoute';
 
