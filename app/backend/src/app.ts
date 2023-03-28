@@ -3,7 +3,7 @@ import * as express from 'express';
 import Login from './routes/login';
 import Team from './routes/teams';
 import Matches from './routes/matches';
-import leaderboardHome from './routes/leaderboardHome';
+import leaderboardHome from './routes/leaderboardRoute';
 
 class App {
   public app: express.Express;
