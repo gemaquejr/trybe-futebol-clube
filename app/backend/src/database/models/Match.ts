@@ -12,7 +12,6 @@ class Match extends Model {
 }
 
 Match.init({
-  // ... Campos
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
