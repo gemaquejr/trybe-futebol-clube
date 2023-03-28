@@ -1,4 +1,4 @@
-import Team from '../database/models/team';
+import Team from '../database/models/Team';
 
 export default class TeamService {
     public teamModel = Team;
