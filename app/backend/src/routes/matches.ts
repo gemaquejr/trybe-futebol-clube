@@ -1,20 +1,14 @@
 import { Router } from 'express';
-import MatchesController from '../controllers/matchController';
-import MatchesService from '../services/matchService';
-import MatchesRepository from '../repository/matchRepository';
-import Jwt from '../middlewares/validateCreation';
+import validateCreation from '../middlewares/validateCreation';
+import MatchController from '../controllers/matchController';
 
-const route = Router();
+const matchRouter = Router();
 
-const jwt = new Jwt();
+const matchController = new MatchController();
 
-const matches = new MatchesRepository();
-const matchesService = new MatchesService(matches);
-const matchesController = new MatchesController(matchesService);
+matchRouter.get('/', (req, res) => matchController.getMatchesInProgress(req, res));
+matchRouter.post('/', validateCreation, (req, res) => matchController.createMatch(req, res));
+matchRouter.patch('/:id/finish', (req, res) => matchController.updateMatch(req, res));
+matchRouter.patch('/:id', (req, res) => matchController.updateMatchInProgress(req, res));
 
-route.get('/matches', matchesController.getMatches.bind(matchesController));
-route.post('/matches', jwt.validate, matchesController.postMatches.bind(matchesController));
-route.patch('/matches/:id/finish', matchesController.patchMatch.bind(matchesController));
-route.patch('/matches/:id', matchesController.patchMatchInProgress.bind(matchesController));
-
-export default route;
+export default matchRouter;
