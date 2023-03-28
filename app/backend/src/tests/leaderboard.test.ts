@@ -8,11 +8,6 @@ import { app } from '../app';
 
 chai.use(chaiHttp);
 
-const testLogin = {
-  email: 'admin@admin.com',
-  password: 'secret_admin'
-}
-
 const { expect } = chai;
 
 describe('Leaderboard', () => {
