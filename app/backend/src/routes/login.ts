@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import LoginController from '../controllers/userController';
-import LoginService from '../services/loginService';
+import LoginService from '../services/userService';
 import LoginRepository from '../repository/loginRepository';
 import validateLogin from '../middlewares/validateLogin';
 
