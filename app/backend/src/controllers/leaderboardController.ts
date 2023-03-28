@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import LeaderboardHomeService from '../services/leaderboardHomeService';
 import LeaderboardAwayService from '../services/leaderboardAwayService';
 import LeaderboardService from '../services/leaderboardService';
-import ILeaderboard from '../interface/ILeaderboard';
 
 export default class LeaderboardController {
     constructor(
