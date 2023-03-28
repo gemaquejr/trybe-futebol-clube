@@ -1,5 +1,5 @@
 import { tokenValidation } from '../helper/Token';
-import User from '../database/models/user';
+import User from '../database/models/User';
 
 export default class UserService {
   public userModel = User;
