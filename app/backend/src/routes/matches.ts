@@ -2,7 +2,7 @@ import { Router } from 'express';
 import MatchesController from '../controllers/matchController';
 import MatchesService from '../services/matchService';
 import MatchesRepository from '../repository/matchRepository';
-import Jwt from '../middlewares/auth';
+import Jwt from '../middlewares/validateCreation';
 
 const route = Router();
 
