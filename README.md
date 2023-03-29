@@ -56,7 +56,7 @@ No diretório do projeto, inicialize o projeto e instale as dependências:
 
 Na pasta app do projeto, suba o container store_manager utilizando o docker-compose.yml. Utilize o comando:
 
-   - `docker-compose up -d`
+   - `npm run compose:up:dev`
 
 ### `npm install`
 
