@@ -52,12 +52,12 @@ O projeto foi para praticar a construção de API's RESTful em CRUD, utilizando 
 
 No diretório do projeto, inicialize o projeto e instale as dependências:
 
+### `npm install`
+
+Instala as dependências.
+
 ### `Rodando a aplicação com o Docker:`
 
 Na pasta app do projeto, suba o container utilizando o docker-compose.yml. Utilize o comando:
 
    - `npm run compose:up:dev`
-
-### `npm install`
-
-Instala as dependências.
